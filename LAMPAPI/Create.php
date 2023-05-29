@@ -16,10 +16,17 @@
 	{
 		$stmt = $conn->prepare("INSERT into Contacts (FirstName, LastName, Phone, Email, ID) VALUES(?,?,?,?,?)");
 		$stmt->bind_param("ssssd", $firstName, $lastName, $phone, $email, $ID);
-		$stmt->execute();
+		if($stmt->execute())
+		{
+			returnWithInfo("success");
+		}
+		else
+		{
+			returnWithError("failure");
+		}
 		$stmt->close();
 		$conn->close();
-		returnWithInfo("Success");
+		
 		
 	}
 
