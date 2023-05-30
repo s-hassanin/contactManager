@@ -1,5 +1,7 @@
 <?php
 	$inData = getRequestInfo();
+
+	// data collected for API call
 	
 	$firstName = $inData["firstName"];
 	$lastName = $inData["lastName"];

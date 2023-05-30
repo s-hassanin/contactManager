@@ -3,6 +3,8 @@
 
 	$inData = getRequestInfo();
 	
+	// data collected for API call
+
 	$id = 0;
 	$firstName = "";
 	$lastName = "";
