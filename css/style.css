@@ -80,3 +80,11 @@ form p a
   text-decoration: none;
   color: #1298F8;
 }
+.buttons
+{
+  background: #E2EBF3;
+  font-size: 30px;
+    border-radius: 25px;
+    width: 50%;
+    font-family: 'Ubuntu', sans-serif;
+}

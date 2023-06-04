@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>Contact Manager</title>
+	<script type="text/javascript" src="js/code.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">	
+	<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function() 
+	{
+		readCookie();
+	}, false);
+	</script>
+		
+</head>
+<body onload="searchContact()">
+	<div id="loggedInDiv">
+		<span id="userName"></span><br />
+		<button type="button" id="logoutButton" class="buttons" onclick="doLogout();"> Log Out </button>
+	</div>
+	<div id="accessUIDiv">
+		<br />
+		<!-- Search Contacts Function -->
+		<label id="searchLabel" for="searchText">Search For Contact:</label>
+		<input type="text" id="searchContact" oninput="searchContact();" placeholder="Search For Contact">
+		<button type="button" id="searchContactButton" class="buttons" onclick="searchContact();"> Search Contact </button><br />
+		<span id="contactSearchResult"></span>
+		<table id="contactTable"></table>
+		<br />
+
+		<!--Add Contact Function-->
+		<br />
+		<label for="contactName">Add Contact:</label>
+		<input type="text" id="contactFirstName" placeholder="Contact First Name">
+		<input type="text" id="contactLastName" placeholder="Contact Last Name">
+		<input type="text" id="contactEmail" placeholder="Contact Email">
+		<input type="text" id="contactPhone" placeholder="Contact Phone Number">
+		<button type="button" id="addContactButton" class="buttons" onclick="addContact();"> Add Contact </button><br />
+		<span id="contactAddResult"></span>
+		<br />
+	</div>
+</body>
+</html>

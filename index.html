@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
+		 <script type="text/javascript" src="js/code.js"></script>
     	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		 <title>Create Account</title>
-		 <link rel="stylesheet" href="style.css">
+		 <title>Log In</title>
+		 <link rel="stylesheet" href="css/style.css">
 		 <script src="https://kit.fontawesome.com/98b4e25f15.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div class="container">
 		<div class="form-box">
-			<h1>Create Account</h1>
+			<h1>Log In</h1>
 			<form>
 				<div class="input-group">
 					<div class="input-field">
 						<i class="fa-solid fa-paw" style="color: #031926;"></i>
-						<input form="Name" placeholder="Name">
+						<input type="text" id="loginName" placeholder="Username" /><br />
 					</div>
-					<div class="input-field">
-						<i class="fa-regular fa-envelope" style="color: #031926;"></i>
-						<input form="Email" placeholder="Email">
-					</div>
-					<div class="input-field">
-						<i class="fa-solid fa-unlock" style="color: #031926;"></i>
-						<input form="Name" placeholder="Password">
-					</div>
+
 					<div class="input-field">
 						<i class="fa-solid fa-lock" style="color: #031926;"></i>
-						<input form="Name" placeholder="Confirm Password">
+						<input type="password" id="loginPassword" placeholder="Password"/><br />
 					</div>
-					
+					<button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Submit </button>
+					<span id="loginResult"></span>
+					<p> New Account?  <a href="CreateAccount.html"> Click Here!</a></p>
 				</div>
 			</form>
 		</div>
