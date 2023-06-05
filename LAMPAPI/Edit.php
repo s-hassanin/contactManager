@@ -1,6 +1,14 @@
 <?php
 
 	$inData = getRequestInfo();
+
+    $firstNameOld = $inData["firstName"];
+    $lastNameOld = $inData["lastName"];
+    $firstNameUpdate = $inData["firstNameUpdate"];
+    $lastNameUpdate = $inData["lastNameUpdate"];
+    $phoneUpdate = $inData["phone"];
+    $emailUpdate = $inData["email"];
+    $userId = $inData["userId"];
 	
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331?", "COP4331");
 	if ($conn->connect_error) 
@@ -9,20 +17,16 @@
 	} 
 	else 
 	{
-		$stmt = $conn->prepare("UPDATE * FROM Contacts SET firstName=? OR lastName=? OR phone=? OR email=? WHERE ID=?");
-		$stmt->bind_param("ssssd", $inData["firstName"], $inData["lastName"], $inData["phone"], $inData["email"], $inData["userId"]);
-		
-		//if condition might need to be something like $conn->query($stmt) === TRUE if that doesn't work
-		if($stmt->execute())
+		$stmt = $conn->prepare("UPDATE Contacts SET FirstName=?, LastName=?, Phone=?, Email=? WHERE ID=? AND FirstName=? AND LastName=?");
+		$stmt->bind_param("ssssdss", $firstNameUpdate, $lastNameUpdate, $phoneUpdate, $emailUpdate, $userId, $firstNameOld, $lastNameOld);
+        if($stmt->execute())
 		{
-			returnWithInfo("success");
+			returnWithInfo("update success");
 		}
 		else
 		{
-			returnWithError("failure");
+			returnWithError("update failure");
 		}
-		
-		
 		$stmt->close();
 		$conn->close();
 	}
@@ -40,13 +44,13 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"error":"' . $err .'"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
-	function returnWithInfo( $searchResults )
+	function returnWithInfo( $obj )
 	{
-		$retValue = '{"results":[' . $searchResults . '],"error":""}';
+		$retValue = '{"status":"' . $obj .'"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
