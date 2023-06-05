@@ -20,15 +20,12 @@
 	<div id="accessUIDiv">
 		<br />
 		<!-- Search Contacts Function -->
-		<label id="searchLabel" for="searchText">Search For Contact:</label>
+		<label id="searchText" for="searchText">Search For Contact:</label>
 		<input type="text" id="searchContact" oninput="searchContact();" placeholder="Search For Contact">
-		<button type="button" id="searchContactButton" class="buttons" onclick="searchContact();"> Search Contact </button><br />
 		<span id="contactSearchResult"></span>
-		<table id="contactTable"></table>
-		<br />
-
-		<!--Add Contact Function-->
-		<br />
+		<table id="contactList"></table>
+        </p><br /><br />
+        <!-- Add Contacts Function -->
 		<label for="contactName">Add Contact:</label>
 		<input type="text" id="contactFirstName" placeholder="Contact First Name">
 		<input type="text" id="contactLastName" placeholder="Contact Last Name">
