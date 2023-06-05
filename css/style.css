@@ -83,8 +83,16 @@ form p a
 .buttons
 {
   background: #E2EBF3;
-  font-size: 30px;
-    border-radius: 25px;
-    width: 50%;
-    font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+  border-radius: 15px;
+  width: 50%;
+  font-family: 'Ubuntu', sans-serif;
+  cursor:pointer
+}
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
 }

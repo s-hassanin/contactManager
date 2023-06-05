@@ -110,13 +110,13 @@ function doLogout()
 
 function addContact()
 {
-	let newContactFirstName = document.getElementById("contactFirstName").value;
-	let newContactLastName = document.getElementById("contactLastName").value;
-	let newContactEmail = document.getElementById("contactEmail").value;
-	let newContactPhone = document.getElementById("contactPhone").value;
+	let firstName = document.getElementById("contactFirstName").value;
+	let lastName = document.getElementById("contactLastName").value;
+	let email = document.getElementById("contactEmail").value;
+	let phone = document.getElementById("contactPhone").value;
 	document.getElementById("contactAddResult").innerHTML = "";
 
-	let tmp = {newContactFirstName,newContactLastName,newContactEmail,newContactPhone,userId};
+	let tmp = {firstName,lastName,email,phone,userId};
 	let jsonPayload = JSON.stringify( tmp );
 
 	let url = urlBase + '/Create.' + extension;
@@ -139,12 +139,12 @@ function addContact()
 	{
 		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
+	searchContact();
 	
 }
-
 function searchContact()
 {
-	let search = document.getElementById("searchText").value;
+	let search = document.getElementById("searchContact").value;
 	document.getElementById("contactSearchResult").innerHTML = "";
 	
 	let contactList = 
@@ -153,7 +153,6 @@ function searchContact()
 	'<th> Last Name</th>' + 
 	'<th> Email</th>' + 
 	'<th> Phone</th>' + 
-	'<th style="display: none;">ID</th>' +
 	'</tr>';
 
 	let tmp = {search,userId};
@@ -181,7 +180,8 @@ function searchContact()
 					contactList += "<td>" + jsonObject.results[i].LastName + "</td>";
 					contactList += "<td>" + jsonObject.results[i].Email + "</td>";
 					contactList += "<td>" + jsonObject.results[i].Phone + "</td>";
-					contactList += '<td style="display: none;">' + jsonObject.results[i].id + "</td>";
+					contactList += "<td>" + '<button onclick="editContact(this);">Edit</button>' + "</td>";
+					contactList += "<td>" + '<button onclick="deleteContact(this);">Delete</button>' + "</td>";
 					contactList += "</tr>";
 				}
 				
@@ -195,4 +195,42 @@ function searchContact()
 		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
 	
+}
+function editContact()
+{
+
+}
+function deleteContact(button)
+{
+	document.getElementById("deleteContactResult").innerHTML = "";
+	let row = button.parentNode.parentNode
+	let firstName = row.cells[0].textContent;
+	let lastName = row.cells[1].textContent;
+	let tmp = {firstName,lastName,userId};
+	let jsonPayload = JSON.stringify( tmp );
+	
+	let url = urlBase + '/Delete.' + extension;
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+		{
+			xhr.onreadystatechange = function() 
+			{
+				if (this.readyState == 4 && this.status == 200) 
+				{
+					// Set search message
+					let jsonObject = JSON.parse( xhr.responseText );
+					document.getElementById("deleteContactResult").innerHTML = "Delete Success";
+					
+					// Clear row
+					row.parentNode.removeChild(row);
+				}
+			};
+			xhr.send(jsonPayload);
+		}
+		catch(err)
+		{
+			document.getElementById("deleteContactResult").innerHTML = err.message;
+		}
 }
