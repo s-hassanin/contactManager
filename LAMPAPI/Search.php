@@ -12,7 +12,7 @@
 	} 
 	else 
 	{
-		$stmt = $conn->prepare("SELECT * FROM Contacts WHERE FirstName LIKE ? OR LastName LIKE ? AND ID=?");
+		$stmt = $conn->prepare("SELECT * FROM Contacts WHERE (FirstName LIKE ? OR LastName LIKE ?) AND ID=?");
 		$searchName = "%" . $inData["search"] . "%";
 		$stmt->bind_param("ssd", $searchName, $searchName, $inData["userId"]);
 		$stmt->execute();
