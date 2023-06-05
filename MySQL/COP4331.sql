@@ -31,7 +31,7 @@ insert into Users (FirstName,LastName,Login,Password) VALUES ('Mike','Burke','Mi
 insert into Users (FirstName,LastName,Login,Password) VALUES ('Salma','Hassanin','SalmaH','tennis');
 insert into Users (FirstName,LastName,Login,Password) VALUES ('Jack','Mabal','JackM','basketBall');
 insert into Users (FirstName,LastName,Login,Password) VALUES ('Korinne','Ramcharitar','KorinneR','volleyBall');
-insert into Users (FirstName,LastName,Login,Password) VALUES ('Schander','Joseph','SchanderJ','baseBall');
+insert into Users (FirstName,LastName,Login,Password) VALUES ('Joseph','Schander','JosephS','baseBall');
 
 
 insert into Contacts(FirstName,LastName,Phone,Email,ID) VALUES ('Rick', 'Leinecker','4078230169','Richard.Leinecker@ucf.edu',1);
