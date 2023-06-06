@@ -171,8 +171,9 @@ function searchContact()
 			{
 				document.getElementById("contactSearchResult").innerHTML = "Contact(s) have been retrieved";
 				let jsonObject = JSON.parse( xhr.responseText );
-				
-				for( let i=0; i<jsonObject.results.length; i++ )
+			try
+			{
+			 	for ( let i=0; i<jsonObject.results.length; i++ )
 				{
 					contactList += "<tr>";
 						
@@ -184,26 +185,85 @@ function searchContact()
 					contactList += "<td>" + '<button onclick="deleteContact(this);">Delete</button>' + "</td>";
 					contactList += "</tr>";
 				}
-				
+			}
+			catch(Error)
+			{
+				document.getElementById("contactSearchResult").innerHTML = "Could not find matching contact";
+			}
 				document.getElementById("contactList").innerHTML = contactList;
 			}
 		};
 		xhr.send(jsonPayload);
 	}
-	catch(err)
+	catch(Error)
 	{
-		document.getElementById("contactSearchResult").innerHTML = err.message;
+		document.getElementById("contactSearchResult").innerHTML = Error.message;
 	}
 	
 }
-function editContact()
+let contactFirstName;
+let contactLastName;
+function editContact(button)
 {
+	row = button.parentNode.parentNode;
 
+	for (let i = 0; i < row.cells.length - 2; i++)
+	{
+		row.cells[i].contentEditable = true;
+	}
+	if(button.textContent === 'Save')
+		{
+			let firstNameUpdate = row.cells[0].textContent;
+			let lastNameUpdate = row.cells[1].textContent;
+			let email = row.cells[2].textContent;
+			let phone = row.cells[3].textContent;
+			let firstName = contactFirstName;
+			let lastName = contactLastName;
+		
+			let tmp = {firstName, lastName, firstNameUpdate, lastNameUpdate, phone, email, userId};
+			let jsonPayload = JSON.stringify( tmp );
+		
+			let url = urlBase + '/Edit.' + extension;
+		
+			let xhr = new XMLHttpRequest();
+			xhr.open("POST", url, true);
+			xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+			try
+			{
+				xhr.onreadystatechange = function() 
+				{
+					if (this.readyState == 4 && this.status == 200) 
+					{
+						let jsonObject = JSON.parse( xhr.responseText );
+						document.getElementById("contactSearchResult").innerHTML = jsonObject.results;
+					}
+				}
+				xhr.send(jsonPayload);
+			}
+			catch(err)
+			{
+				document.getElementById("contactSearchResult").innerHTML = err.message;
+			}
+				
+	for (let i = 0; i < row.cells.length - 2; i++)
+	{
+		row.cells[i].contentEditable = false;
+	}
+		
+		button.textContent = "Edit";
+		searchContact();
+	}
+	else
+	{
+	contactFirstName = row.cells[0].textContent;
+	contactLastName = row.cells[1].textContent;
+	button.textContent = "Save";
+	}
 }
 function deleteContact(button)
 {
 	document.getElementById("deleteContactResult").innerHTML = "";
-	let row = button.parentNode.parentNode
+	let row = button.parentNode.parentNode;
 	let firstName = row.cells[0].textContent;
 	let lastName = row.cells[1].textContent;
 	let tmp = {firstName,lastName,userId};
@@ -219,11 +279,9 @@ function deleteContact(button)
 			{
 				if (this.readyState == 4 && this.status == 200) 
 				{
-					// Set search message
 					let jsonObject = JSON.parse( xhr.responseText );
 					document.getElementById("deleteContactResult").innerHTML = "Delete Success";
 					
-					// Clear row
 					row.parentNode.removeChild(row);
 				}
 			};
