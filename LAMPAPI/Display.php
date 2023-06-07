@@ -12,7 +12,7 @@
 	} 
 	else 
 	{
-		$stmt = $conn->prepare("SELECT * FROM Contacts WHERE ID=?");
+		$stmt = $conn->prepare("SELECT * FROM Contacts WHERE UserID=?");
 		$stmt->bind_param("d", $inData["userId"]);
 		$stmt->execute();
 		

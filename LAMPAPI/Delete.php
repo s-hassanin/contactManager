@@ -3,9 +3,8 @@
 
 	// data collected for API call
 	
-	$firstName = $inData["firstName"];
-	$lastName = $inData["lastName"];
-	$ID = $inData["userId"];
+	$contactId = $inData["contactId"];
+	$userId = $inData["userId"];
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331?", "COP4331");
 	if ($conn->connect_error) 
@@ -14,8 +13,8 @@
 	} 
 	else
 	{
-		$stmt = $conn->prepare("DELETE from Contacts WHERE FirstName=? AND LastName=? AND ID=?");
-		$stmt->bind_param("ssd", $firstName, $lastName, $ID);
+		$stmt = $conn->prepare("DELETE from Contacts WHERE ContactID=? AND UserID=?");
+		$stmt->bind_param("dd",$contactId, $userId);
 		if($stmt->execute())
         {
             returnWithInfo("deleted");
