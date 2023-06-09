@@ -107,6 +107,47 @@ function doLogout()
 	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	window.location.href = "index.html";
 }
+function doRegister()
+{
+	let firstName = document.getElementById("registerFirstName").value;
+	let lastName = document.getElementById("registerLastName").value;
+	let login = document.getElementById("registerUsername").value;
+	let password = document.getElementById("registerPassword").value;
+	let confirmPassword = document.getElementById("confirmPassword").value;
+	document.getElementById("registerResult").innerHTML = "";
+	let tmp = {firstName,lastName,login,password};
+	let jsonPayload = JSON.stringify( tmp );
+	
+	let url = urlBase + '/Register.' + extension;
+
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	if (password === confirmPassword)
+	{
+		try
+		{
+			xhr.onreadystatechange = function() 
+			{
+				if (this.readyState == 4 && this.status == 200) 
+				{
+					let jsonObject = JSON.parse( xhr.responseText );
+					document.getElementById("registerResult").innerHTML = jsonObject.data;
+				}
+			};
+			xhr.send(jsonPayload);
+			window.location.href = "PetManager.html";
+		}
+		catch(err)
+		{
+			document.getElementById("registerResult").innerHTML = err.message;
+		}
+	}
+	else
+	{
+		document.getElementById("registerResult").innerHTML = "Passwords do not match.";
+	}
+}
 
 function addContact()
 {
