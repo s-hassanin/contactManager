@@ -139,6 +139,10 @@ function addContact()
 	{
 		document.getElementById("contactAddResult").innerHTML = err.message;
 	}
+	document.getElementById("contactFirstName").value = "";
+	document.getElementById("contactLastName").value = "";
+	document.getElementById("contactEmail").value = "";
+	document.getElementById("contactPhone").value = "";
 	searchContact();
 	
 }
@@ -153,6 +157,9 @@ function searchContact()
 	'<th> Last Name</th>' + 
 	'<th> Email</th>' + 
 	'<th> Phone</th>' + 
+	'<th>Edit</th>' + 
+	'<th>Delete</th>' + 
+	'<th style="display: none;">ID</th>' + 
 	'</tr>';
 
 	let tmp = {search,userId};
@@ -183,6 +190,7 @@ function searchContact()
 					contactList += "<td>" + jsonObject.results[i].Phone + "</td>";
 					contactList += "<td>" + '<button onclick="editContact(this);">Edit</button>' + "</td>";
 					contactList += "<td>" + '<button onclick="deleteContact(this);">Delete</button>' + "</td>";
+					contactList += '<td style="display: none;">' + jsonObject.results[i].ContactID + "</td>";
 					contactList += "</tr>";
 				}
 			}
@@ -201,13 +209,11 @@ function searchContact()
 	}
 	
 }
-let contactFirstName;
-let contactLastName;
 function editContact(button)
 {
 	row = button.parentNode.parentNode;
 
-	for (let i = 0; i < row.cells.length - 2; i++)
+	for (let i = 0; i < row.cells.length - 3; i++)
 	{
 		row.cells[i].contentEditable = true;
 	}
@@ -217,10 +223,8 @@ function editContact(button)
 			let lastNameUpdate = row.cells[1].textContent;
 			let email = row.cells[2].textContent;
 			let phone = row.cells[3].textContent;
-			let firstName = contactFirstName;
-			let lastName = contactLastName;
-		
-			let tmp = {firstName, lastName, firstNameUpdate, lastNameUpdate, phone, email, userId};
+			let contactId = row.cells[6].textContent;
+			let tmp = {contactId, firstNameUpdate, lastNameUpdate, phone, email, userId};
 			let jsonPayload = JSON.stringify( tmp );
 		
 			let url = urlBase + '/Edit.' + extension;
@@ -245,18 +249,15 @@ function editContact(button)
 				document.getElementById("contactSearchResult").innerHTML = err.message;
 			}
 				
-	for (let i = 0; i < row.cells.length - 2; i++)
+	for (let i = 0; i < row.cells.length - 3; i++)
 	{
 		row.cells[i].contentEditable = false;
 	}
 		
 		button.textContent = "Edit";
-		searchContact();
 	}
 	else
 	{
-	contactFirstName = row.cells[0].textContent;
-	contactLastName = row.cells[1].textContent;
 	button.textContent = "Save";
 	}
 }
@@ -264,9 +265,8 @@ function deleteContact(button)
 {
 	document.getElementById("deleteContactResult").innerHTML = "";
 	let row = button.parentNode.parentNode;
-	let firstName = row.cells[0].textContent;
-	let lastName = row.cells[1].textContent;
-	let tmp = {firstName,lastName,userId};
+	contactId = row.cells[6].textContent;
+	let tmp = {contactId,userId};
 	let jsonPayload = JSON.stringify( tmp );
 	
 	let url = urlBase + '/Delete.' + extension;
