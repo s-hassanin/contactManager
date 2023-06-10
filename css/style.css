@@ -113,9 +113,9 @@ transform: scaleX(1);
 }
 .form-box2
 {
-  width: 60%;
-  height: 650px;
-  max-width: 850px;
+  width: 70%;
+  height: 675px;
+  max-width: 900px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -127,6 +127,14 @@ transform: scaleX(1);
   padding: 50px 60px 70px;
   text-align: center;
 }
+.form-box2 h1
+{
+  font-size: 30px;
+  color: #2F5575;
+  position: relative;
+
+}
+
 .form-box h1
 {
   font-size: 30px;
@@ -156,6 +164,7 @@ transform: scaleX(1);
   border-bottom: 2px solid #fff;
   display: flex;
   align-items: center;
+
 }
 .input-field input
 {
@@ -339,11 +348,12 @@ tbody text-replace:hover
 }
 .CreateAccountButton
 {
-  width: 30%;
+  width: 20%;
   height: 35px;
 }
 .input-group .CreateAccountButton
 {
+
   background-color: #455D73;
   border: 2px solid #2F5575;
   outline: none;
@@ -352,6 +362,7 @@ tbody text-replace:hover
   font-size: 1.1em;
   color:#fff;
   font-weight: 500;
+  margin-top: 5%;
   margin-left: 40px;
   transition: .5s;
 }
