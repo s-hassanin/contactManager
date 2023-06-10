@@ -107,6 +107,26 @@ function doLogout()
 	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	window.location.href = "index.html";
 }
+function validatePassword() {
+    var p = document.getElementById('registerPassword').value,
+        errors = [];
+    if (p.length < 8) {
+        errors.push("Your password must be at least 8 characters"); 
+    }
+    if (p.search(/[a-z]/i) < 0) {
+        errors.push("Your password must contain at least one letter.");
+    }
+    if (p.search(/[0-9]/) < 0) {
+        errors.push("Your password must contain at least one digit."); 
+    }
+	if (p.search(/[.*!@#$%^&*]/) < 0)
+		errors.push("Your password must contain at least 1 special character.")
+    if (errors.length > 0) {
+        document.getElementById("registerResult").innerHTML = (errors.join("\n"));
+        return false;
+    }
+    return true;
+}
 function doRegister()
 {
 	let firstName = document.getElementById("registerFirstName").value;
@@ -114,6 +134,7 @@ function doRegister()
 	let login = document.getElementById("registerUsername").value;
 	let password = document.getElementById("registerPassword").value;
 	let confirmPassword = document.getElementById("confirmPassword").value;
+	
 	document.getElementById("registerResult").innerHTML = "";
 	let tmp = {firstName,lastName,login,password};
 	let jsonPayload = JSON.stringify( tmp );

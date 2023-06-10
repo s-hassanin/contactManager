@@ -47,7 +47,9 @@
 						<i class="fa-solid fa-lock" style="color: #234058;"></i>
 						<input type="password" id="confirmPassword" placeholder="Confirm Password">
 					</div>
-					<button type="button" id="loginButton" class="buttons" onclick="doLogin();"> Create Account </button>
+					<button type="button" id="loginButton" class="buttons" onclick="if(validatePassword()) doRegister();"> Create Account </button>
+					<br>
+					<span id="registerResult"></span>
 					
 				</div>
 
