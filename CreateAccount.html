@@ -6,20 +6,21 @@
 		 <script type="text/javascript" src="js/code.js"></script>
     	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		 <title>Create Account</title>
-		 <link rel="stylesheet" href="css/style.css">
+		 <link rel="stylesheet" href="style.css">
 		 <script src="https://kit.fontawesome.com/98b4e25f15.js" crossorigin="anonymous"></script>
 </head>
 <body>
+	
 	<header>
 		<h2 class="logo"> Pegasus Pet Finder</h2>
 			<nav class="navigation">
-			   <a href="index.html">Log In</a>
-			   <a href="CreateAccount.html">Create Account</a>
-			   <button class="btnlogin-popup">Home</button>
+			   <a href="#">Log In</a>
+			   <a href="#">Create Account</a>
+			   <a href="#">Home</a>
    </header>
    
 	<div class="container">
-		<div class="form-box">
+		<div class="form-box2">
 			<h1>Create Account</h1>
 			<form>
 				<div class="input-group">
@@ -27,29 +28,27 @@
 						<i class="fa-solid fa-paw" style="color: #234058;"></i>
 						<input type="text"id="registerFirstName" placeholder="First Name" required minlength="2" maxlength="15">
 					</div>
-					<p><i><small>First should be 2 letters min</small></i></p>
+					<p style="color:#9d061a;"><i><small>First should be 2 letters min</small></i></p>
 					<div class="input-field">
 						<i class="fa-solid fa-paw" style="color: #234058;"></i>
 						<input type="text"id="registerLastName" placeholder="Last Name" required minlength="2" maxlength="15">
 					</div>
-					<p><i><small>Last should be 2 letters min</small></i></p>
+					<p style="color:#9d061a;"><i><small>Last should be 2 letters min</small></i></p>
 					<div class="input-field">
 						<i class="fa-solid fa-bone" style="color: #234058;"></i>
 						<input type="text"id="registerUsername" placeholder="Username">
 					</div>
-					<p><i><small>Eg: DogLuver23</small></i></p>
+					<p style="color:#9d061a;"><i><small>Eg: DogLuver23</small></i></p>
 					<div class="input-field">
 						<i class="fa-solid fa-unlock" style="color: #234058;"></i>
 						<input type="password" id="registerPassword" placeholder="Password">
 					</div>
-					<p><i><small>Eg: Qqfrws7@</small></i></p>
+					<p style="color:#9d061a;"><i><small>Eg: Qqfrws7@</small></i></p>
 					<div class="input-field">
 						<i class="fa-solid fa-lock" style="color: #234058;"></i>
 						<input type="password" id="confirmPassword" placeholder="Confirm Password">
 					</div>
-					<button type="button" id="loginButton" class="buttons" onclick="if(validatePassword()) doRegister();"> Create Account </button>
-					<br>
-					<span id="registerResult"></span>
+					<button type="button" id="loginButton" class="CreateAccountButton" onclick="doLogin();"> Create Account </button>
 					
 				</div>
 
@@ -62,3 +61,7 @@
 	
 </body>
 </html>
+
+  
+
+
