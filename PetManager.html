@@ -1,8 +1,15 @@
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Contact Manager</title>
-	<script type="text/javascript" src="js/code.js"></script>
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+    <script src="bootstable.min.js"></script>
+   <script src="https://kit.fontawesome.com/98b4e25f15.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">	
 	<script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function() 
@@ -10,31 +17,63 @@
 		readCookie();
 	}, false);
 	</script>
-		
+
 </head>
+
+
+   
+
 <body onload="searchContact()">
-	<div id="loggedInDiv">
-		<span id="userName"></span><br />
-		<button type="button" id="logoutButton" class="buttons" onclick="doLogout();"> Log Out </button>
-	</div>
-	<div id="accessUIDiv">
-		<br />
-		<!-- Search Contacts Function -->
-		<label id="searchName" for="searchName">Search For Contact:</label>
-		<input type="text" id="searchContact" oninput="searchContact();" placeholder="Search For Contact">
-		<span id="contactSearchResult"></span>
-		<table id="contactList"></table>
-        <span id="deleteContactResult"></span>
-        </p><br /><br />
-        <!-- Add Contacts Function -->
-		<label for="contactName">Add Contact:</label>
-		<input type="text" id="contactFirstName" placeholder="Contact First Name">
-		<input type="text" id="contactLastName" placeholder="Contact Last Name">
-		<input type="text" id="contactEmail" placeholder="Contact Email">
-		<input type="text" id="contactPhone" placeholder="Contact Phone Number">
-		<button type="button" id="addContactButton" class="buttons" onclick="addContact();"> Add Contact </button><br />
-		<span id="contactAddResult"></span>
-		<br />
-	</div>
-</body>
+	<main class="table">
+        <section class="table_header">
+			<div id="loggedInDiv">
+				<span id="userName"></span><br />
+				<button type="button" id="logoutButton" class="LogOutButton" onclick="doLogout();"> Log Out </button>
+			</div>
+            <h1><b>Pegasus Pet Finder</b></h1>
+        </section>
+
+        <section class="table_body">
+			<div class="search_wrap search_wrap_3">
+				<div class="search_box">
+					<input type="text" class="input" placeholder="search..." id="searchName" oninput="searchContact();">
+					<span id="contactSearchResult"></span>
+					<div class="btn btn_common">
+						<i class="fas fa-search"></i>
+					</div>
+				</div>
+			</div>
+            <table class="table" id="makeEditable">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+			<th>Phone Number</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+
+				
+            </table>
+			<div id="accessUIDiv">
+				<br />
+				<label for="contactName"> Add Contact:</label>
+				<input type="text" id="contactFirstName" placeholder="Contact First Name">
+				<input type="text" id="contactLastName" placeholder="Contact Last Name">
+				<input type="text" id="contactEmail" placeholder="Contact Email">
+				<input type="text" id="contactPhone" placeholder="Contact Phone Number">
+				<button type="button" id="addContactButton" class="buttons" onclick="addContact();"> Add Contact </button><br />
+				<span id="contactAddResult"></span>
+				<br />
+			</div>
+			
+        </section>
+
+       </main>
+	</body>
+
 </html>
