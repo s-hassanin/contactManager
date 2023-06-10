@@ -2,14 +2,94 @@
 *{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family:'Poppins',sans-serif;
+
+}
+body
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url('vet.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
 
 
+}
+header
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 99;
+}
+.logo
+{
+  font-size: 2em;
+  color:#2F5575;
+  user-select: none;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.navigation a
+{
+position: relative;
+font-size: 1.1em;
+color:#2F5575;
+text-decoration: none;
+font-weight: 500;
+margin-left: 40px;
+}
+.navigation a::after
+{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 3px;
+  background:#fff;
+  border-radius: 5px;
+
+  transform: scaleX(0);
+  transition: transform .5s;
+}
+.navigation a:hover::after
+{
+  transform-origin: left;
+transform: scaleX(1);
+}
+.navigation .btnlogin-popup
+{
+  width: 130px;
+  height: 50px;
+  background: transparent;
+  border: 2px solid #2F5575;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  color:#2F5575;
+  font-weight: 500;
+  margin-left: 40px;
+  transition: .5s;
+}
+.navigation .btnlogin-popup:hover
+{
+  background:#fff;
+  color: #fff;
 }
 .container
 {
   height: 100vh;
   width: 100%;
-  background-image: linear-gradient(rgba(0,0,50,.8),rgba(0,0,50,.8)), url(vet.jpg);
+  background-image:  url(vet.jpg);
   background-position: center;
   background-size: cover;
   position: relative;
@@ -24,7 +104,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  background: #fff;
+  background: transparent;
+  border:2px solid #2F5575;
+  border-radius: 20px;
+  backdrop-filter: blur(50px);
   padding: 50px 60px 70px;
   text-align: center;
 }
@@ -50,11 +133,16 @@
 }
 .input-field
 {
-  background: #E2EBF3;
+  background: transparent;
   margin: 15px 0;
-  border-radius: 3px;
+  border-radius: 6px;
+  border-bottom: 2px solid #fff;
   display: flex;
   align-items: center;
+}
+.input-field input
+{
+width: 100%
 }
 
 input
@@ -78,21 +166,101 @@ form p
 form p a
 {
   text-decoration: none;
-  color: #1298F8;
+  color: #2F5575;
 }
 .buttons
 {
   background: #E2EBF3;
-  font-size: 20px;
-  border-radius: 15px;
-  width: 50%;
-  font-family: 'Ubuntu', sans-serif;
-  cursor:pointer
-}
-table {
-  border-collapse: collapse;
+  font-size: 15px;
+    border-radius: 5px;
+    width: 15%;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 13px;
 }
 
-th, td {
-  border: 1px solid black;
+.buttons
+{
+  width: 75%;
+  height: 45px;
+  background: #2F5575;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  color: #fff;
+  font-weight: 500;
+}
+.login-register
+{
+  font-size: .9em;
+  color: #fff;
+  text-align: center;
+  font-weight: 500;
+  margin: 25px 0 10px;
+}
+.login-register a
+{
+  color: #2F5575;
+  text-decoration: none;
+  font-weight: 600;
+}
+.login-register a:hover
+{
+text-decoration: underline;
+}
+main.table
+{
+  width: 82vw;
+  height: 90vh;
+  background-color: #fff5;
+
+  backdrop-filter: blur(10px);
+  box-shadow: 0  .4rem .8rem #000500;
+  border-radius: .8rem;
+
+overflow: hidden
+}
+.table_header
+{
+  width: 100%;
+  height: 10%;
+  background-color: #fff4;
+  padding: .8rem 1rem;
+}
+.table_body
+{
+  width: 95%;
+  max-height:calc(89%);
+  background-color: #fff5;
+  margin:  .8rem auto;
+  border-radius: .6rem;
+  overflow: auto;
+}
+table
+{
+  width: 100%;
+
+}
+table, th, td
+{
+  border-collapse: collapse;
+  padding: 1rem;
+}
+
+thead th{
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #fff6;
+
+}
+tbody tr:nth-child(even)
+{
+  background-color: #0000000b;
+
+}
+tbody text-replace:hover
+{
+  background-color: #fff6;
 }
