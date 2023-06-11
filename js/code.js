@@ -108,10 +108,11 @@ function doLogout()
 	window.location.href = "index.html";
 }
 function validatePassword() {
+	document.getElementById("registerResult").innerHTML = "";
     var p = document.getElementById('registerPassword').value,
         errors = [];
     if (p.length < 8) {
-        errors.push("Your password must be at least 8 characters"); 
+        errors.push("Your password must be at least 8 characters."); 
     }
     if (p.search(/[a-z]/i) < 0) {
         errors.push("Your password must contain at least one letter.");
@@ -122,7 +123,8 @@ function validatePassword() {
 	if (p.search(/[.*!@#$%^&*]/) < 0)
 		errors.push("Your password must contain at least 1 special character.")
     if (errors.length > 0) {
-        document.getElementById("registerResult").innerHTML = (errors.join("\n"));
+		
+        document.getElementById("registerResult").innerHTML = "Password specifications not met.";
         return false;
     }
     return true;
@@ -150,14 +152,14 @@ function doRegister()
 		{
 			xhr.onreadystatechange = function() 
 			{
+				
 				if (this.readyState == 4 && this.status == 200) 
 				{
 					let jsonObject = JSON.parse( xhr.responseText );
-					document.getElementById("registerResult").innerHTML = jsonObject.data;
+					document.getElementById("registerResult").innerHTML = jsonObject.error;
 				}
 			};
 			xhr.send(jsonPayload);
-			window.location.href = "PetManager.html";
 		}
 		catch(err)
 		{
@@ -168,6 +170,7 @@ function doRegister()
 	{
 		document.getElementById("registerResult").innerHTML = "Passwords do not match.";
 	}
+
 }
 
 function addContact()
@@ -265,9 +268,9 @@ function searchContact()
 		};
 		xhr.send(jsonPayload);
 	}
-	catch(Error)
+	catch(err)
 	{
-		document.getElementById("contactSearchResult").innerHTML = Error.message;
+		document.getElementById("contactSearchResult").innerHTML = err.message;
 	}
 	
 }
