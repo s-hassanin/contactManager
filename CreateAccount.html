@@ -29,17 +29,17 @@
 						<i class="fa-solid fa-paw" style="color: #234058;"></i>
 						<input type="text"id="registerFirstName" placeholder="First Name" required minlength="2" maxlength="15">
 					</div>
-					<p style="color:#9d061a;"><i><small>First should be 2 letters min</small></i></p>
+					<p style="color:#9d061a;"><i><small>First name must be between 2-15 characters</small></i></p>
 					<div class="input-field"id="group2">
 						<i class="fa-solid fa-paw" style="color: #234058;"></i>
 						<input type="text"id="registerLastName" placeholder="Last Name" required minlength="2" maxlength="15">
 					</div>
-					<p style="color:#9d061a;"><i><small>Last should be 2 letters min</small></i></p>
+					<p style="color:#9d061a;"><i><small>Last name must be between 2-15 characters</small></i></p>
 					<div class="input-field"id="group3">
 						<i class="fa-solid fa-bone" style="color: #234058;"></i>
 						<input type="text"id="registerUsername" placeholder="Username">
 					</div>
-					<p style="color:#9d061a;"><i><small>Eg: DogLuver23</small></i></p>
+					<p style="color:#9d061a;"><i><small>Must be between 2-15 characters with no spaces Eg:Dogluver82</small></i></p>
 					<div class="input-field"id="group4">
 						<i class="fa-solid fa-unlock" style="color: #234058;"></i>
 						<input type="password" id="registerPassword" placeholder="Password">
@@ -51,7 +51,7 @@
 					</div>
 					
 				
-					<button type="button" id="loginButton" class="CreateAccountButton" onclick="if(validatePassword()) doRegister();"> Create Account </button>
+					<button type="button" id="loginButton" class="CreateAccountButton" onclick="if(validatePassword()) {doRegister();}"> Create Account </button>
 					<br>
 					<output id="registerResult"	style="color:#9d061a">
 					</output>

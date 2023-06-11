@@ -131,16 +131,34 @@ function validatePassword() {
 }
 function doRegister()
 {
+	userId = 0;
 	let firstName = document.getElementById("registerFirstName").value;
 	let lastName = document.getElementById("registerLastName").value;
 	let login = document.getElementById("registerUsername").value;
 	let password = document.getElementById("registerPassword").value;
 	let confirmPassword = document.getElementById("confirmPassword").value;
-	
 	document.getElementById("registerResult").innerHTML = "";
+	if(/^[a-z]{2,15}$/im.test(firstName)){}
+	else
+	{
+		document.getElementById("registerResult").innerHTML = "Not a valid first name";
+		return;
+	}
+	if(/^[a-z]{2,15}$/im.test(lastName)){}
+	else
+	{
+		document.getElementById("registerResult").innerHTML = "Not a valid last name";
+		return;
+	}
+	if(/[^\s]{2,15}/.test(login)){}
+	else
+	{
+		document.getElementById("registerResult").innerHTML = "Not a valid username";
+		return;
+	}
+	
 	let tmp = {firstName,lastName,login,password};
 	let jsonPayload = JSON.stringify( tmp );
-	
 	let url = urlBase + '/Register.' + extension;
 
 	let xhr = new XMLHttpRequest();
@@ -156,7 +174,15 @@ function doRegister()
 				if (this.readyState == 4 && this.status == 200) 
 				{
 					let jsonObject = JSON.parse( xhr.responseText );
-					document.getElementById("registerResult").innerHTML = jsonObject.error;
+					if(jsonObject.error == "Login Exists")
+					{
+						document.getElementById("registerResult").innerHTML = jsonObject.error;
+						test = 1;
+					}
+					else
+					{
+						window.location.href = "index.html";
+					}
 				}
 			};
 			xhr.send(jsonPayload);
@@ -181,6 +207,38 @@ function addContact()
 	let phone = document.getElementById("contactPhone").value;
 	document.getElementById("contactAddResult").innerHTML = "";
 
+	if(/^[a-z]{2,15}$/im.test(firstName))
+	{
+	}
+	else
+	{
+		document.getElementById("contactAddResult").innerHTML = "Not a valid first name";
+		return;
+	}
+	if(/^[a-z]{2,15}$/im.test(lastName))
+	{
+	}
+	else
+	{
+		document.getElementById("contactAddResult").innerHTML = "Not a valid last name";
+		return;
+	}
+	if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/im.test(email))
+	{
+	}
+	else 
+	{
+		document.getElementById("contactAddResult").innerHTML = "Not a valid email";
+		return;
+	}
+	if (/\d{10}/im.test(phone))
+	{
+	}
+	else
+	{
+		document.getElementById("contactAddResult").innerHTML = "Not a valid phone number";
+		return;
+	}
 	let tmp = {firstName,lastName,email,phone,userId};
 	let jsonPayload = JSON.stringify( tmp );
 
@@ -196,6 +254,7 @@ function addContact()
 			if (this.readyState == 4 && this.status == 200) 
 			{
 				document.getElementById("contactAddResult").innerHTML = "Contact has been added";
+				searchContact();
 			}
 		};
 		xhr.send(jsonPayload);
@@ -208,7 +267,6 @@ function addContact()
 	document.getElementById("contactLastName").value = "";
 	document.getElementById("contactEmail").value = "";
 	document.getElementById("contactPhone").value = "";
-	searchContact();
 	
 }
 function searchContact()
@@ -241,7 +299,7 @@ function searchContact()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("contactSearchResult").innerHTML = "Contact(s) have been retrieved";
+				document.getElementById("contactSearchResult").innerHTML = "";
 				let jsonObject = JSON.parse( xhr.responseText );
 			try
 			{
@@ -254,14 +312,14 @@ function searchContact()
 					contactList += "<td>" + jsonObject.results[i].Email + "</td>";
 					contactList += "<td>" + jsonObject.results[i].Phone + "</td>";
 					contactList += "<td>" + '<button onclick="editContact(this);">Edit</button>' + "</td>";
-					contactList += "<td>" + '<button onclick="deleteContact(this);">Delete</button>' + "</td>";
+					contactList += "<td>" + '<button class="btn btn-delete" onclick="deleteContact(this);"><span class="mdi mdi-delete mdi-24px"></span> <span class="mdi mdi-delete-empty mdi-24px"></span></button>' + "</td>";
 					contactList += '<td style="display: none;">' + jsonObject.results[i].ContactID + "</td>";
 					contactList += "</tr>";
 				}
 			}
 			catch(Error)
 			{
-				document.getElementById("contactSearchResult").innerHTML = "Could not find matching contact";
+				document.getElementById("contactSearchResult").innerHTML = "";
 			}
 				document.getElementById("contactList").innerHTML = contactList;
 			}
@@ -291,6 +349,30 @@ function editContact(button)
 			let contactId = row.cells[6].textContent;
 			let tmp = {contactId, firstNameUpdate, lastNameUpdate, phone, email, userId};
 			let jsonPayload = JSON.stringify( tmp );
+			if(/^[a-z]{2,15}$/im.test(firstNameUpdate)){}
+			else
+			{
+				document.getElementById("deleteContactResult").innerHTML = "Not a valid first name";
+				return;
+			}
+			if(/^[a-z]{2,15}$/im.test(lastNameUpdate)){}
+			else
+			{
+				document.getElementById("deleteContactResult").innerHTML = "Not a valid last name";
+				return;
+			}
+			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/im.test(email)){}
+			else 
+			{
+				document.getElementById("deleteContactResult").innerHTML = "Not a valid email";
+				return;
+			}
+			if (/\d{10}/im.test(phone)){}
+			else
+			{
+				document.getElementById("deleteContactResult").innerHTML = "Not a valid phone number";
+				return;
+			}
 		
 			let url = urlBase + '/Edit.' + extension;
 		
@@ -304,14 +386,14 @@ function editContact(button)
 					if (this.readyState == 4 && this.status == 200) 
 					{
 						let jsonObject = JSON.parse( xhr.responseText );
-						document.getElementById("contactSearchResult").innerHTML = jsonObject.results;
+						document.getElementById("deleteContactResult").innerHTML = "";
 					}
 				}
 				xhr.send(jsonPayload);
 			}
 			catch(err)
 			{
-				document.getElementById("contactSearchResult").innerHTML = err.message;
+				document.getElementById("deleteContactResult").innerHTML = err.message;
 			}
 				
 	for (let i = 0; i < row.cells.length - 3; i++)

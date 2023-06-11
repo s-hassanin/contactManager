@@ -113,12 +113,8 @@ transform: scaleX(1);
 .form-box2
 {
   width: 70%;
-<<<<<<< HEAD
   height: 650px;
   max-height: 750px;
-=======
-  height: 675px;
->>>>>>> 407eef1e82d55cbf80a81fba7b22d70ce0aa0d97
   max-width: 900px;
   position: absolute;
   top: 55%;
@@ -389,3 +385,5 @@ tbody text-replace:hover
   color: #fff;
   font-weight: 500;
 }
+
+
