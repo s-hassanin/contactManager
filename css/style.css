@@ -28,12 +28,12 @@ header
   justify-content: space-between;
   align-items: center;
   z-index: 99;
-  background-color: #C7CCD1;
+  background-color: #d7e9f3d0;
 }
 .logo
 {
   font-size: 2em;
-  color:#2F5575;
+  color:#1c3b55;
   user-select: none;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -41,7 +41,7 @@ header
 {
 position: relative;
 font-size: 1.1em;
-color:#2F5575;
+color:#1c3b55;
 text-decoration: none;
 font-weight: 500;
 margin-left: 40px;
@@ -70,12 +70,12 @@ transform: scaleX(1);
   width: 130px;
   height: 50px;
   background: transparent;
-  border: 2px solid #2F5575;
+  border: 2px solid #1c3b55;
   outline: none;
   border-radius: 6px;
   cursor: pointer;
   font-size: 1.1em;
-  color:#2F5575;
+  color:#1c3b55;
   font-weight: 500;
   margin-left: 40px;
   transition: .5s;
@@ -104,7 +104,7 @@ transform: scaleX(1);
   left: 50%;
   transform: translate(-50%,-50%);
   background: transparent;
-  border:2px solid #2F5575;
+  border:2px solid #1c3b55;
   border-radius: 20px;
   backdrop-filter: blur(50px);
   padding: 50px 60px 70px;
@@ -121,7 +121,7 @@ transform: scaleX(1);
   left: 50%;
   transform: translate(-50%,-50%);
   background: transparent;
-  border:2px solid #2F5575;
+  border:2px solid #1c3b55;
   border-radius: 20px;
   backdrop-filter: blur(50px);
   padding: 50px 60px 70px;
@@ -130,7 +130,7 @@ transform: scaleX(1);
 .form-box2 h1
 {
   font-size: 30px;
-  color: #2F5575;
+  color: #1c3b55;
   position: relative;
 
 }
@@ -140,7 +140,7 @@ transform: scaleX(1);
   font-size: 30px;
   margin-top: 1px;
   margin-bottom: 5px;
-  color: #2F5575;
+  color: #1c3b55;
   position: relative;
 
 }
@@ -150,7 +150,7 @@ transform: scaleX(1);
   width:30px;
   height:  4px;
   border-radius: 3px;
-  background: #2F5575;
+  background: #1c3b55;
   position: absolute;
   bottom: -12px;
   left: 50%;
@@ -192,7 +192,7 @@ form p
 form p a
 {
   text-decoration: none;
-  color: #2F5575;
+  color: #1c3b55;
 }
 .buttons
 {
@@ -208,7 +208,7 @@ form p a
 {
   width: 75%;
   height: 45px;
-  background: #2F5575;
+  background: #1c3b55;
   border: none;
   outline: none;
   border-radius: 6px;
@@ -227,7 +227,7 @@ form p a
 }
 .login-register a
 {
-  color: #2F5575;
+  color: #1c3b55;
   text-decoration: none;
   font-weight: 600;
 }
@@ -319,13 +319,13 @@ tbody text-replace:hover
 	right: 0;
 	width: 50px;
 	height: 80%;
-	background: #234058;
+	background: #1c3b55;
 	z-index: 1;
 	cursor: pointer;
 }
 
 .search_wrap .search_box .btn:hover{
-	background: #234058;	
+	background: #1c3b55;	
 }
 
 .search_wrap .search_box .btn.btn_common .fas{
@@ -354,8 +354,8 @@ tbody text-replace:hover
 .input-group .CreateAccountButton
 {
 
-  background-color: #455D73;
-  border: 2px solid #2F5575;
+  background-color: #1f3140;
+  border: 2px solid #1c3b55;
   outline: none;
   border-radius: 6px;
   cursor: pointer;
@@ -369,7 +369,7 @@ tbody text-replace:hover
 .input-group .CreateAccountButton:hover
 {
   background:#fff;
-  color: #386080;
+  color: #1c3b55d4;
 }
 .LogOutButton
 {
