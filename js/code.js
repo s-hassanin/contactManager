@@ -311,7 +311,7 @@ function searchContact()
 					contactList += "<td>" + jsonObject.results[i].LastName + "</td>";
 					contactList += "<td>" + jsonObject.results[i].Email + "</td>";
 					contactList += "<td>" + jsonObject.results[i].Phone + "</td>";
-					contactList += "<td>" + '<button onclick="editContact(this);">Edit</button>' + "</td>";
+					contactList += "<td>" + '<button class="buttons" onclick="editContact(this);"><i class="mdi mdi-pencil"></i><span>Edit</span></button>' + "</td>";
 					contactList += "<td>" + '<button class="btn btn-delete" onclick="deleteContact(this);"><span class="mdi mdi-delete mdi-24px"></span> <span class="mdi mdi-delete-empty mdi-24px"></span></button>' + "</td>";
 					contactList += '<td style="display: none;">' + jsonObject.results[i].ContactID + "</td>";
 					contactList += "</tr>";
@@ -401,11 +401,11 @@ function editContact(button)
 		row.cells[i].contentEditable = false;
 	}
 		
-		button.textContent = "Edit";
+		button.children[1].textContent = "Edit";
 	}
 	else
 	{
-	button.textContent = "Save";
+	button.children[1].textContent = "Save";
 	}
 }
 function deleteContact(button)
