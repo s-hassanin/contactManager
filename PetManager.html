@@ -13,7 +13,7 @@
     <script src="bootstable.min.js"></script>
    <script src="https://kit.fontawesome.com/98b4e25f15.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-	<link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css" rel="stylesheet"/>
+	<link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function() 
 	{
@@ -33,7 +33,6 @@
 				<span id="userName"></span><br />
 				<button type="button" id="logoutButton" class="LogOutButton" onclick="doLogout();"> Log Out </button>
 			</div>
-            <h1><b>Pegasus Pet Finder</b></h1>
         </section>
 
         <section class="table_body">
@@ -41,9 +40,6 @@
 				<div class="search_box">
 					<input type="text" class="input" placeholder="search..." id="searchContact" oninput="searchContact();">
 					<span id="contactSearchResult"></span>
-					<div class="btn btn_common">
-						<i class="fas fa-search"></i>
-					</div>
 				</div>
 			</div>
             <table class="table" id="contactList">

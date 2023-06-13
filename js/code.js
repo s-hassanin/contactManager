@@ -212,7 +212,7 @@ function addContact()
 	}
 	else
 	{
-		document.getElementById("contactAddResult").innerHTML = "Not a valid first name";
+		document.getElementById("contactAddResult").innerHTML = "Not a valid pet name";
 		return;
 	}
 	if(/^[a-z]{2,15}$/im.test(lastName))
@@ -231,7 +231,7 @@ function addContact()
 		document.getElementById("contactAddResult").innerHTML = "Not a valid email";
 		return;
 	}
-	if (/\d{10}/im.test(phone))
+	if (phone.length == 10)
 	{
 	}
 	else
@@ -276,8 +276,8 @@ function searchContact()
 	
 	let contactList = 
 	'<tr>' + 
-	'<th> First Name</th>' + 
-	'<th> Last Name</th>' + 
+	'<th> Pet Name</th>' + 
+	'<th> Family Name</th>' + 
 	'<th> Email</th>' + 
 	'<th> Phone</th>' + 
 	'<th>Edit</th>' + 
@@ -352,7 +352,7 @@ function editContact(button)
 			if(/^[a-z]{2,15}$/im.test(firstNameUpdate)){}
 			else
 			{
-				document.getElementById("deleteContactResult").innerHTML = "Not a valid first name";
+				document.getElementById("deleteContactResult").innerHTML = "Not a valid pet name";
 				return;
 			}
 			if(/^[a-z]{2,15}$/im.test(lastNameUpdate)){}
@@ -367,7 +367,7 @@ function editContact(button)
 				document.getElementById("deleteContactResult").innerHTML = "Not a valid email";
 				return;
 			}
-			if (/\d{10}/im.test(phone)){}
+			if (phone.length==10){}
 			else
 			{
 				document.getElementById("deleteContactResult").innerHTML = "Not a valid phone number";
