@@ -16,6 +16,17 @@ body
   background-size: cover;
   background-position: center;
 }
+
+.banner
+{
+  font-size: 72px;
+  margin-top: 1px;
+
+  margin-bottom: 10px;
+  color: #041a2b;
+
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 header
 {
   position: fixed;
@@ -158,30 +169,22 @@ transform: scaleX(1);
 }
 .form-box3
 {
-  width: 700px;
-  height: 300px;
-  background-position: center center;
+  width: 70%;
+  height: 60%;
   position: absolute;
-  margin: 20% 30%;
-  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: transparent;
+  background-color: #f3f6f8;
+  border:2px solid #022239;
   border-radius: 20px;
-  backdrop-filter: blur(50px);
-
-}
-
-.form-box3 h3{
-  margin-bottom: ;
   text-align: center;
-  color: #02233B;
-  text-transform: uppercase;
-  font-size: 50px;
-  font-weight: 200;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .form-box3 p
 {
-  font-size: 18px;
-  color: #02233B;
+  font-size: 26px;
+  color: #041a2b;
 }
 .input-field
 {
@@ -414,25 +417,3 @@ tbody text-replace:hover
 }
 
 
-.img-gallery
-{
-  width: 80%;
-  margin: 100px auto 50px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,2fr));
- grid-gap: 30px;
-}
-.img-gallery img
-{
-  height: 300px;
-  width: 100%;
-  cursor: pointer;
-  border-radius: 5px;
-
-}
-.img-gallery img:hover
-{
-transform: scale(0.8) rotate(-15deg);
-border-radius: 10px;
-box-shadow: 0 32px 75px rgba(68,77,136,0.2);
-}
