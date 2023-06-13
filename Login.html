@@ -22,7 +22,7 @@
 	<div class="container">
 		<div class="form-box">
 			<h1>Sign in</h1>
-			<form action="#">
+			<form onSubmit="return false">
 				<div class="input-group">
 					<div class="input-field">
 						<i class="fa-solid fa-paw" style="color: #031926;"></i>
@@ -36,7 +36,7 @@
 						
 					</div>
 					
-					<button type="button" id="loginButton" class="CreateAccountButton" style="width: 300px;" onclick="doLogin();"> Log in </button>
+					<button type="submit" id="loginButton" class="CreateAccountButton" style="width: 300px;" onclick="doLogin();"> Log in </button>
 					<span id="loginResult"></span>
 				</div>
 				<div class="login-register">
