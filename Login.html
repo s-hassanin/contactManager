@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<script type="text/javascript" src="js/code.js"></script>
+		 <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		 <title>Log In</title>
+		 <link rel="stylesheet" href="css/style.css">
+		 <script src="https://kit.fontawesome.com/98b4e25f15.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	<header>
+		<h2 class="logo"> Pegasus Pet Finder</h2>
+			<nav class="navigation">
+			   <a href="index.html">Home</a>
+			   <a href="CreateAccount.html">Create Account</a>
+			   <a href="Login.html">Log In</a>
+
+
+
+   </header>
+	<div class="container">
+		<div class="form-box">
+			<h1>Sign in</h1>
+			<form action="#">
+				<div class="input-group">
+					<div class="input-field">
+						<i class="fa-solid fa-paw" style="color: #031926;"></i>
+						<input form="Name"	id="loginName" placeholder="UserName" required>
+						
+					</div>
+
+					<div class="input-field">
+						<i class="fa-solid fa-lock" style="color: #031926;"></i>
+						<input type ="Password"	id="loginPassword"  placeholder="Password">
+						
+					</div>
+					
+					<button type="button" id="loginButton" class="CreateAccountButton" style="width: 300px;" onclick="doLogin();"> Log in </button>
+					<span id="loginResult"></span>
+				</div>
+				<div class="login-register">
+					<p> Don't have an account?
+						<a href="CreateAccount.html"
+						class="register-link"> Register Here</a></p>
+				
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
+
+
+	
+</body>
+</html>
+
+  
+
+

@@ -91,7 +91,7 @@ function readCookie()
 	
 	if( userId < 0 )
 	{
-		window.location.href = "index.html";
+		window.location.href = "Login.html";
 	}
 	else
 	{
@@ -181,7 +181,7 @@ function doRegister()
 					}
 					else
 					{
-						window.location.href = "index.html";
+						window.location.href = "Login.html";
 					}
 				}
 			};
